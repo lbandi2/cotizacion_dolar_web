@@ -26,7 +26,9 @@ class Cotizacion(models.Model):
         minutes = (datetime.now().minute - self.datetime.minute)
         if days == 0:
             # difference = 'Hoy'
-            if hours > 0:
+            if hours == 1:
+                difference = f'Hace 1 h'
+            elif hours > 1:
                 difference = f'Hace {hours} hs'
             else:
                 difference = f'Hace {minutes} min'
