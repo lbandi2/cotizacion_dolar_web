@@ -1,0 +1,14 @@
+{% extends 'home/base.html' %}
+
+{% block title %} {{ quote.currency | upper }} {{ quote.name | title }} {% endblock %}
+
+{% block content %}
+
+<ul>
+    <li>Fecha: {{ quote.datetime }}</li>
+    <li>Compra: {{ quote.buy }}</li>
+    <li>Venta: {{ quote.sell }}</li>
+    <li>Tarjeta: {{ quote.other }}</li>
+</ul>
+
+{% endblock %}

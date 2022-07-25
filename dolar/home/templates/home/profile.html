@@ -1,0 +1,30 @@
+{% extends 'home/base.html' %}
+
+{% block title %} Profile {% endblock %}
+
+{% block content %}
+
+<div class="my-5 container">
+
+    <div class="my-1 container" align='center'>
+    {% if user.is_superuser %}
+        <input type="button" class="btn btn-secondary btn-warning" onclick="location.href='/admin'" value="Admin portal"></input><br><br>
+    {% endif %}
+    </div>
+
+<form method="post" style='text-align: left; margin: 0 auto; width: auto' > {% csrf_token %}
+    {% if messages %}
+    <div class="alert alert-success">
+        {% for m in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ m }}</li>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-secondary btn-success" value='Update'>
+        <input type="button" class="btn btn-secondary" value="Reset" id="resetBtn" onClick="this.form.reset()" />
+        <input type="button" class="btn btn-secondary" onclick="location.href='/password'" value="Change Password"></input>
+</div>
+
+{% endblock %}
